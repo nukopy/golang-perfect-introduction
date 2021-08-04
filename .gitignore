@@ -1,4 +1,6 @@
-docs/*.pdf
+.DS_Store
 .idea/
 .envrc
 .env
+
+docs/*.pdf
