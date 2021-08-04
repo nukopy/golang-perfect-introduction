@@ -24,10 +24,71 @@ go version go1.16.6 darwin/amd64
 
 ## 目次
 
-1. [x] Go に触れる（[資料](https://docs.google.com/presentation/d/1Z5b5fIA5vqVII7YoIc4IesKuPWNtcU00cWgW08gfdjg/edit#slide=id.g4e29971f9a_0_649)）
-   1. Go とは
-   2. Go が利用できる領域
-   3. Go を学ぶには
-   4. Hello, World
-   5. Go のインストールと設定
-   6. Go の開発ツール
+- [x] 1. Go に触れる（[資料](https://docs.google.com/presentation/d/1Z5b5fIA5vqVII7YoIc4IesKuPWNtcU00cWgW08gfdjg/edit#slide=id.g4e29971f9a_0_649)）
+  1. Go とは
+  1. Go が利用できる領域
+  1. Go を学ぶには
+  1. Hello, World
+  1. Go のインストールと設定
+  1. Go の開発ツール
+- [ ] 2. 基本構文（[資料](https://docs.google.com/presentation/d/1CIMDenDLZ7NPNgzmfbCNH_W3dYjaTEBdUYfUuXXuMHk/edit)）
+  1. 変数
+  1. 定数
+  1. 演算子
+  1. 制御構文
+- [ ] 3. 関数と型（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 4. パッケージ（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 5. コマンドラインツール（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 6. 抽象化（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 7. エラー処理（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 8. テストとテスタビリティ（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 9. ゴールーチンとチャネル（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 10. HTTP サーバとクライアント（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 11. データベース（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 12. テキスト処理（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 13. リフレクション（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 13. 静的解析とコード生成（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 14. ジェネリクス（型パラメタ）（[資料]()）
+  1. a
+  1. b
+  1. c
+- [ ] 15. パフォーマンスチューニング（[資料]()）
+  1. a
+  1. b
+  1. c
