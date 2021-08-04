@@ -409,3 +409,49 @@ if a := f(); a > 0 {
 cd mymod  # mymod に main.go が置いてある想定
 go mod init mymod
 ```
+
+## ユニットテストの書き方
+
+参考：https://qiita.com/tmzkysk/items/8bb37795ac223664d682
+
+- 任意のモジュールの作成 `xxxx.go`
+- `xxxx_test.go` という名前でモジュールを作成
+- テストの実装
+  - `testing` というパッケージのインポート
+  - `TestXXX` という名前でテストメソッドを作成
+  - テストコードを実装
+  - パラメータと期待値の組み合わせの配列（例えば struct を要素とした配列）を用意して、ループで検証していく形が推奨されている
+- テストの実行
+  - カレントディレクトリ以下全てを再帰的にテスト
+    - `go test -v ./...`
+  - 特定のパッケージをテスト
+    - `go test -v ./mypkg`
+    - 相対パスを付けずに `go test -v mypkg` だと認識されず、エラーになる
+  - 特定のメソッドのみテスト
+    - `go test -v -run TestXXX ./...`
+    - 特定のパッケージのテストと組み合わせられる
+  - テスト実行前後に処理を入れる（setup、teardown の話）
+    - 以下のように `TestMain` メソッドを実装する
+  - モックを使ったテスト
+    - また後で勉強する：https://qiita.com/tmzkysk/items/8bb37795ac223664d682#%E3%83%86%E3%82%B9%E3%83%88%E3%81%A7%E3%83%A2%E3%83%83%E3%82%AF%E3%82%92%E4%BD%BF%E3%81%86%E3%81%AB%E3%81%AF
+
+```go
+package calc
+
+import (
+    "fmt"
+    "os"
+    "testing"
+)
+
+func TestMain(m *testing.M) {
+    fmt.Println("before test")
+    code := m.Run()
+    fmt.Println("after test")
+    os.Exit(code)
+}
+
+func TestAdd(t *testing.T) {
+    // 以下省略
+}
+```
