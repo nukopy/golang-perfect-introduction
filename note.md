@@ -70,14 +70,14 @@ go f()
 - 標準ライブラリ一覧
   - https://pkg.go.dev/std
 
-| 標準ライブラリ名     | 内容、機能             |
-| -------------------- | ---------------------- |
-| fmt                  | 書式、出力に関する処理 |
-| net/http             | HTTP サーバなど        |
-| archive, compress    | zip や gzip など       |
-| encoding             | JSON、XML、CSV など    |
-| html/template        | HTML テンプレート      |
-| 　 os, path/filepath | ファイル操作など       |
+| 標準ライブラリ名  | 内容、機能             |
+| ----------------- | ---------------------- |
+| fmt               | 書式、出力に関する処理 |
+| net/http          | HTTP サーバなど        |
+| archive, compress | zip や gzip など       |
+| encoding          | JSON、XML、CSV など    |
+| html/template     | HTML テンプレート      |
+| os, path/filepath | ファイル操作など       |
 
 #### 周辺ツールの充実
 
@@ -193,3 +193,24 @@ go run pkg_name
   - `panic` 関数を使ってデバッグ
   - スタックトレースが出るので便利
 - print デバッグ
+
+## 小休止
+
+Go を Homebrew を用いてインストールし、VSCode の Go 拡張を入れてコードを書き始めようとしたら、Go 拡張に必要なツールが無くて怒られた。
+
+以下、必要なツールのインストールコマンド。
+
+```sh
+# "gopls"（Language Server Protocol）
+go get -v golang.org/x/tools/gopls
+
+# "goimports"
+go get -v golang.org/x/tools/cmd/goimports
+
+# "go-outline"
+go get -v github.com/ramya-rao-a/go-outline
+
+# "gopkgs"
+go get -v github.com/uudashr/gopkgs/v2/cmd/gopkgs
+```
+
