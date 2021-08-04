@@ -24,7 +24,7 @@ go version go1.16.6 darwin/amd64
 
 ## 目次
 
-- [x] 1. Go に触れる（[資料](https://docs.google.com/presentation/d/1Z5b5fIA5vqVII7YoIc4IesKuPWNtcU00cWgW08gfdjg/edit#slide=id.g4e29971f9a_0_649)）
+- [x] 1. Go に触れる（[資料](https://docs.google.com/presentation/d/1Z5b5fIA5vqVII7YoIc4IesKuPWNtcU00cWgW08gfdjg/edit)）
   1. Go とは
   1. Go が利用できる領域
   1. Go を学ぶには
