@@ -31,7 +31,7 @@ go version go1.16.6 darwin/amd64
   1. Hello, World
   1. Go のインストールと設定
   1. Go の開発ツール
-- [ ] 2. 基本構文（[資料](https://docs.google.com/presentation/d/1CIMDenDLZ7NPNgzmfbCNH_W3dYjaTEBdUYfUuXXuMHk/edit)）
+- [x] 2. 基本構文（[資料](https://docs.google.com/presentation/d/1CIMDenDLZ7NPNgzmfbCNH_W3dYjaTEBdUYfUuXXuMHk/edit)）
   1. 変数
   1. 定数
   1. 演算子
