@@ -520,6 +520,10 @@ Go の文法上では、構造体リテラルと配列リテラルは同じ。�
   - [スライド](https://docs.google.com/presentation/d/1DtWB-8FcnNb9asxSpIaOLYbAEc9OjBAwMLNxKnPA8pc/edit#slide=id.g4cbe4d134e_0_191)
   - [動画](https://youtu.be/q92KKz5RsnA?t=1790)
 
+![Image: Slice of Go](https://storage.googleapis.com/scrapbox-file-distribute/60ff38138db4c0001c00de6b/e309a9508c8bdbfeb7f136692edce66a?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=file-upload%40scrapbox-server.iam.gserviceaccount.com%2F20210814%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20210814T094311Z&X-Goog-Expires=300&X-Goog-SignedHeaders=host&X-Goog-Signature=0a8cb5679a6837a031ad9cf2cced41d68705c11a12c66e40006e0780bdc5d6f57f44268614c30023bd9780a6fc3d30d403c6c4a18ac01e8a194d58a2d9893f7f5cc9f1b45a5ed7718e5da87bb27e9a6e665c70f33407f2eefd747bdbee63fafd17269b9bff9f98147f2c7be002f9d776448226c139409a1968a9c6f70899d5c8d1891a49395910f3fe14f533b35b21c50c9ee41b4e5a65114dae4be953999c6c41bc219e41b42cb37d6ca69b850f0bf3513b40ba40c2a5e48e0922b5021fb32281e9755ca2c652b71ac936a51c59256aa60209b49697740db5a697ee6bbf132b24330ad4d61f6c4dc3cbed7e3b444f913bf726b899ded685e6886ee4930e9d89)
+
+（[「プログラミング言語 Go 完全入門」のスライド](https://docs.google.com/presentation/d/1DtWB-8FcnNb9asxSpIaOLYbAEc9OjBAwMLNxKnPA8pc/edit#slide=id.g4cbe4d134e_0_191)より引用）
+
 ##### コンポジット型：マップ
 
 #### 2. 関数
