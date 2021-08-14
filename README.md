@@ -36,10 +36,10 @@ go version go1.16.6 darwin/amd64
   1. 定数
   1. 演算子
   1. 制御構文
-- [ ] 3. 関数と型（[資料]()）
-  1. a
-  1. b
-  1. c
+- [ ] 3. 関数と型（[資料](https://docs.google.com/presentation/d/1DtWB-8FcnNb9asxSpIaOLYbAEc9OjBAwMLNxKnPA8pc/edit)）
+  1. 型
+  1. 関数
+  1. メソッド
 - [ ] 4. パッケージ（[資料]()）
   1. a
   1. b
