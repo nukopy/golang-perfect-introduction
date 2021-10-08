@@ -6,13 +6,15 @@ import (
 	"fmt"
 )
 
-func main()  {
+func main() {
 	// type
-	// chap03_1_type_cast()
-	// chap03_1_type_cast_exercise()
+	// chap03_1_cast()
+	// chap03_1_cast_exercise_error()
+	// chap03_1_cast_exercise()
 	// chap03_1_type_bool_exercise()
 
 	// struct
+	// chap03_1_type_literal()
 	// chap03_1_struct()
 
 	// array
@@ -31,7 +33,7 @@ func main()  {
 // ------------------------------
 
 func chap03_1_slice() {
-	slice.MySlice()
+	slice.PracticeSlice()
 }
 
 // ------------------------------
@@ -152,11 +154,24 @@ func chap03_1_cast() {
 	fmt.Println(n)
 }
 
+/*
+func chap03_1_cast_exercise_error() {
+	var sum int
+	sum = 5 + 6 + 3
+	avg := sum / 3
+	// avg := float32(sum) / 3
+	if avg > 4.5 { // compile error
+		fmt.Println("good")
+	}
+}
+*/
+
 func chap03_1_cast_exercise() {
 	var sum int
 	sum = 5 + 6 + 3
-	avg := float32(sum) / 3 //
+	avg := float32(sum) / 3
 	if avg > 4.5 {
+		fmt.Println(sum)
 		fmt.Println("good")
 	}
 }
@@ -173,6 +188,9 @@ func chap03_1_type_bool_exercise()  {
 
 func chap03_1_type_literal() {
 	// int 型のスライスの形リテラルを使った変数定義
-	// var ns []int
-	// var m map[string]int
+	var ns []int
+	var m map[string]int
+
+	fmt.Println(ns)
+	fmt.Println(m)
 }
