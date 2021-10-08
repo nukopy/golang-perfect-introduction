@@ -657,11 +657,11 @@ sl := new([5]int)[0:5]
   - 新しい要素をコピーする
   - `len`、`cap` を更新する
 
-[Image: append の挙動 - 1](img/chap03_append.png)
+![Image: append の挙動 - 1](img/chap03_append.png)
 
 （[引用元](https://docs.google.com/presentation/d/1DtWB-8FcnNb9asxSpIaOLYbAEc9OjBAwMLNxKnPA8pc/edit#slide=id.g4cbe4d134e_0_837)）
 
-[Image: append の挙動 - 2](img/chap03_append2.png)
+![Image: append の挙動 - 2](img/chap03_append2.png)
 
 （[引用元](https://docs.google.com/presentation/d/1DtWB-8FcnNb9asxSpIaOLYbAEc9OjBAwMLNxKnPA8pc/edit#slide=id.g7dc1d6af71_0_121)）
 
