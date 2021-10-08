@@ -15,7 +15,11 @@ import (
 	"fmt"
 )
 
-func main() {
+func mymod() {
+	var1 :=	"string"
+	var2 :=	1
+
 	fmt.Println("Hello, world!")
-	mymod()
+	fmt.Println("hoge")
+	fmt.Println(var1, var2)
 }
