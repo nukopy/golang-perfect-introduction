@@ -1,9 +1,11 @@
 package main
 
 import (
+	"chap03/funcc"
 	"chap03/mapp"
 	"chap03/print"
 	"chap03/slice"
+	"chap03/usertype"
 	"fmt"
 )
 
@@ -29,7 +31,29 @@ func main() {
 	// chap03_1_slice()
 
 	// map
-	chap03_1_map()
+	// chap03_1_map()
+
+	// type
+	// chap03_1_type()
+
+	// func
+	chap03_2_func()
+}
+
+// ------------------------------
+// type
+// ------------------------------
+
+func chap03_2_func() {
+	funcc.PracticeFunc()
+}
+
+// ------------------------------
+// type
+// ------------------------------
+
+func chap03_1_type() {
+	usertype.PracticeType()
 }
 
 // ------------------------------
