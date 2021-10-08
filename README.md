@@ -9,6 +9,10 @@
 - その他リンク
   - [The Go Playground](https://play.golang.org/)
     - Go のブラウザ上の実行環境
+  - MS 公式：[Go in Visual Studio Code](https://code.visualstudio.com/docs/languages/go)
+    - VSCode の Go の設定
+  - MS 公式：[Debug Go Programs in VSCode](https://github.com/golang/vscode-go/blob/master/docs/debugging.md)
+    - VSCode での Go のデバッグの仕組み
 
 ## 動作環境
 
