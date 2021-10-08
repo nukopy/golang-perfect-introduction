@@ -1,6 +1,7 @@
 package main
 
 import (
+	"chap03/mapp"
 	"chap03/print"
 	"chap03/slice"
 	"fmt"
@@ -25,7 +26,18 @@ func main() {
 	// chap03_1_composite_literals()
 
 	// slice
-	chap03_1_slice()
+	// chap03_1_slice()
+
+	// map
+	chap03_1_map()
+}
+
+// ------------------------------
+// マップ
+// ------------------------------
+
+func chap03_1_map() {
+	mapp.PracticeMap()
 }
 
 // ------------------------------
