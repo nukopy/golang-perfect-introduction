@@ -14,12 +14,12 @@
 
 ```sh
 $ sw_vers
-ProductName:    Mac OS X
-ProductVersion: 10.15.7
-BuildVersion:   19H1217
+ProductName:    macOS
+ProductVersion: 11.6
+BuildVersion:   20G165
 
 $ go version
-go version go1.16.6 darwin/amd64
+go version go1.17 darwin/amd64
 ```
 
 ## 目次

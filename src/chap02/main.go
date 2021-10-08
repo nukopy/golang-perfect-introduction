@@ -8,6 +8,7 @@ import (
 func main() {
 	// chap02_3()
 	chap02_4()
+	iota_no_test()
 }
 
 func chap02_3() {

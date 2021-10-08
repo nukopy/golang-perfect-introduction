@@ -5,6 +5,9 @@
 
 docs/*.pdf
 
+# Binaries local
+chap02
+
 # Binaries for programs and plugins
 main
 *.exe
