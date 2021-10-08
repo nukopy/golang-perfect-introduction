@@ -1,11 +1,15 @@
 package mapp
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func PracticeMap() {
 	fmt.Println("===== in chap03/mapp =====")
 	// init_map()
-	manipulate_map()
+	// manipulate_map()
+	word_count()
 }
 
 func init_map() {
@@ -70,4 +74,15 @@ func manipulate_map() {
 	delete(m, "xx")
 	val4, ok4 := m["xx"]
 	fmt.Println("after :", val4, ok4) // 削除されていることを確認
+}
+
+func word_count() {
+	// var counts map[string]int // これだと counts == nil で空のマップですら無く、ランタイムエラーになる
+	counts := map[string]int{}
+	str := "dog dog dogs cat cat dog cats cats dog dog cat cat"
+
+	for _, s := range strings.Split(str, " ") {
+		counts[s]++
+	}
+	fmt.Println(counts)
 }
