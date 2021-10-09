@@ -3,6 +3,7 @@ package main
 import (
 	"chap03/funcc"
 	"chap03/mapp"
+	"chap03/method"
 	"chap03/print"
 	"chap03/slice"
 	"chap03/usertype"
@@ -37,7 +38,18 @@ func main() {
 	// chap03_1_type()
 
 	// func
-	chap03_2_func()
+	// chap03_2_func()
+
+	// method
+	chap03_3_method()
+}
+
+// ------------------------------
+// type
+// ------------------------------
+
+func chap03_3_method() {
+	method.PracticeMethod()
 }
 
 // ------------------------------
