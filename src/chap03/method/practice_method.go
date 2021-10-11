@@ -10,7 +10,7 @@ func PracticeMethod() {
 	// TRY1()
 	// TRY_me()
 	// practice_method_value()
-	practice_method_stmt()
+	practice_method_expression()
 }
 
 type Hex int
@@ -135,7 +135,7 @@ func practice_method_value() {
 	fmt.Println(f()) // hex の値は束縛されているので、f() の hex の値は変わらず、100 が出力される
 }
 
-func practice_method_stmt() {
+func practice_method_expression() {
 	// メソッド式：レシーバを第 1 引数とした関数になる
 	// 型に紐付いたメソッドを直接呼び出すこともできる
 	// また、別の変数の値として渡すことも出来る。その場合、ただの関数のように振る舞う。
