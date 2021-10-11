@@ -40,7 +40,7 @@ go version go1.17 darwin/amd64
   1. 定数
   1. 演算子
   1. 制御構文
-- [ ] 3. 関数と型（[資料](https://docs.google.com/presentation/d/1DtWB-8FcnNb9asxSpIaOLYbAEc9OjBAwMLNxKnPA8pc/edit)）
+- [x] 3. 関数と型（[資料](https://docs.google.com/presentation/d/1DtWB-8FcnNb9asxSpIaOLYbAEc9OjBAwMLNxKnPA8pc/edit)）
   1. 型
   1. 関数
   1. メソッド

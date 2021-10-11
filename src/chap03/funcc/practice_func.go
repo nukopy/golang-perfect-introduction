@@ -7,9 +7,9 @@ func PracticeFunc() {
 	// practice_closure()
 	// practice_closure2()
 	// practice_copy()
-	practice_pointer()
+	// practice_pointer()
 	// odd_or_even()
-	practice_swap()
+	// practice_swap()
 }
 
 func practice_closure() {
