@@ -55,6 +55,7 @@
     - [レシーバに使用できる型](#レシーバに使用できる型)
     - [メソッド値](#メソッド値)
     - [メソッド式](#メソッド式)
+    - [レシーバがポインタのときの注意すべき挙動](#レシーバがポインタのときの注意すべき挙動)
 - [4. パッケージ](#4-パッケージ)
 - [5. コマンドラインツール](#5-コマンドラインツール)
 - [6. 抽象化](#6-抽象化)
@@ -896,6 +897,52 @@ func main() {
   fmt.Println(f(hex)) // 64
 }
 ```
+
+#### レシーバがポインタのときの注意すべき挙動
+
+- ツイート
+  - https://twitter.com/inukirom/status/1065520332411363328
+
+> メソッドのレシーバーがポインタのときには値ではなくポインタがバインドされるのでこういう挙動になるという話です。for ループじゃなくても変数を使い回していると同じ事がおきますが、実際にこういうことが発生するのは for を使っているときが多いと思います。
+
+```go
+package main
+
+import "fmt"
+
+type Foo struct {
+    Name string
+}
+
+func (f *Foo) PrintName() {
+    fmt.Printf("%p ", f)
+    fmt.Println(f.Name)
+}
+
+func main() {
+    foos := []Foo{{"aaa"}, {"bbb"}, {"ccc"}}
+
+    var callbacks []func()
+    for _, f := range foos {
+      fmt.Printf("%+v\n", f)
+      fmt.Printf("%p %p\n", &f, f.PrintName)
+      callbacks = append(callbacks, f.PrintName)
+    }
+
+    fmt.Printf("----------\n")
+
+    for _, cb := range callbacks {
+      cb()
+    }
+}
+```
+
+- 課題コード
+  - https://play.golang.org/p/pRqsmBe-Ovu
+  - 自分が引っかかったポイント
+    - `f.PrintName` を `append` したとき、f の値が束縛されると思ったが、実際には `PrintName` は型 `Foo`のポインタ（`*Foo`）に紐付いたメソッドであるため、ここでの `f.PrintName` は `(&f).PrintName` のシンタックスシュガーである。
+- 解説コード
+  - https://play.golang.org/p/JH1gdtDN4Nw
 
 ## 4. パッケージ
 
