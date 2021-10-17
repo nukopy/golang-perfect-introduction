@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"chap04/greeting"
+	"chap04/scope"
 )
 
 func main() {
@@ -15,7 +16,7 @@ func main() {
 	// greeting.do() unexported なメソッドなので外部からはアクセスできず、コンパイルエラーになる
 
 	// 4.2. パッケージ変数とスコープ
-	// todo
+	scope.CheckUniversalScope()
 
 	// 4.3. パッケージの初期化
 	// todo

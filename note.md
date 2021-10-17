@@ -66,6 +66,15 @@
     - [パッケージ外へのエクスポート](#パッケージ外へのエクスポート)
     - [GOPATH](#gopath)
   - [4.2. パッケージ変数とスコープ](#42-パッケージ変数とスコープ)
+    - [スコープ](#スコープ)
+    - [Go のスコープの種類](#go-のスコープの種類)
+      - [ブロックスコープ](#ブロックスコープ)
+      - [ファイルスコープ](#ファイルスコープ)
+      - [パッケージ](#パッケージ)
+      - [パッケージ変数](#パッケージ変数)
+      - [ユニバーススコープ](#ユニバーススコープ)
+      - [補足：レキシカルスコープとは](#補足レキシカルスコープとは)
+      - [補足：Python のグローバルスコープ](#補足python-のグローバルスコープ)
   - [4.3. パッケージの初期化](#43-パッケージの初期化)
   - [4.4. ライブラリのバージョン管理](#44-ライブラリのバージョン管理)
 - [5. コマンドラインツール](#5-コマンドラインツール)
@@ -1070,7 +1079,263 @@ var fuga string // unexported
 
 ### 4.2. パッケージ変数とスコープ
 
+#### スコープ
+
+- スコープ scope
+  - 識別子（変数名、関数名、型名など）を参照できる範囲
+  - 参照元によって所属するスコープが違う
+  - 親子関係があり、
+    - 親のスコープで定義した識別子は子のスコープで参照できる（子スコープは親スコープ内に存在するため）
+    - 子のスコープで定義した識別子（変数など）は親のスコープで参照できない
+
+以下、例をいくつか。
+
+- 親スコープで定義した識別子は子スコープ内で参照できる
+  - [The Go Playground で実行](https://play.golang.org/p/baWpNrQWUOm)
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    // 親スコープ
+    parent := "Hi, parent!"
+    {
+        // 子スコープ
+        child := "Hi, child!"
+        fmt.Println(parent, child)
+    }
+    // fmt.Println(parent, child)
+}
+```
+
+- 子スコープで定義した識別子は親スコープ内で参照できない（コンパイルエラーになる）
+  - [The Go Playground で実行](https://play.golang.org/p/3yANt2xpe-T)
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    // 親スコープ
+    parent := "Hi, parent!"
+    {
+        // 子スコープ
+        child := "Hi, child!"
+        // fmt.Println(parent, child)
+    }
+    fmt.Println(parent, child)
+}
+```
+
+#### Go のスコープの種類
+
+- Go はレキシカルスコープを採用
+- スコープは 4 種類（下に行くほど大きなスコープ）
+  - ブロック
+  - ファイル
+  - パッケージ
+  - ユニバース
+
+##### ブロックスコープ
+
+- ブロックスコープ
+  - 関数や if、for などで作られるブロック単位のスコープ
+  - 中括弧から中括弧（`{` ~ `}`）で囲まれた部分がブロック
+  - 性質
+    - ブロック内で宣言した識別子はブロック内でしか参照できない
+
+例
+
+```go
+import (
+    "fmt"
+)
+
+func f() {
+    n := 100
+    fmt.Println(n)
+}
+
+func g() {
+    // 関数 g で作られたブロックスコープ内で宣言した n は、関数 f で作られたブロックスコープ内で宣言した n とは別の変数として扱われる
+    n := 200
+    fmt.Println(n)
+}
+```
+
+##### ファイルスコープ
+
+- ファイルスコープ
+  - ファイルごとのスコープ
+  - 性質
+    - ファイル内で import したパッケージを保持するスコープ（ファイルごとのパッケージを管理するためのスコープ）。ファイルスコープはこの用途のためだけに存在する。
+
+Go の仕様では、ファイルごとにパッケージを import しなければならない。例えば、`foo.go`、`bar.go` という 2 つのファイルを作成し、どちらのファイルでも "fmt" パッケージを使用したいときは、両方のファイルに `import ("fmt")` を書く必要がある。これはファイルスコープという仕様によって `import ("fmt")` の影響がファイル単位に収まるからである。当然、あるファイルで import したパッケージは別のファイルでは呼び出すことができない。
+
+仮にファイルスコープがない場合を考えると、まず、1 つのパッケージに対して 1 回しか import することができなくなる。結局 C 言語のヘッダーファイルのような Go のパッケージの import 文をつらつらと書いたファイルを書く必要がでてきて、ソースコードも読みづらくなる。
+
+まとめると、Go のファイルスコープは、パッケージのファイルごとの import を実現し、コードを読みやすくするための仕組みである。
+
+##### パッケージ
+
+- パッケージスコープ
+  - パッケージ単位のスコープ
+  - 大文字から始まる識別子は他のパッケージから参照することが出来る
+
+##### パッケージ変数
+
+- パッケージ変数
+  - 関数間で変数を共有するための仕組み
+  - 関数内で定義した変数は関数を出ると消えてしまう（ブロックスコープなので）
+  - 関数をまたいだデータの共有には 2 種類の方法がある
+    - パッケージ変数
+    - メソッドを用いる
+  - 書き方
+    - 関数と同じレベルで変数を定義する
+    - 注意：`:=` の記法は関数内でしか使えないため、パッケージ変数を定義する場合は `var 変数名 型名 =` で定義する必要がある。
+  - 注意
+    - パッケージ変数はあまり使わないほうが良い。`goroutine` でデータの競合が起きるのはだいたいパッケージ変数の書き換え部分が原因。
+
+例（[Go Playground で実行](https://play.golang.org/p/z18G_7v6fGB)）
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+// package level variable
+// main パッケージ内で使用できる変数を定義
+var msg string = "Hello,"
+
+func f() {
+    fmt.Println(msg, "world!")
+}
+
+func g() {
+    fmt.Println(msg, "GitHub!")
+}
+
+func main() {
+    f()
+    g()
+
+    msg = "Hi,"
+
+    f()
+    g()
+}
+```
+
+##### ユニバーススコープ
+
+- ユニバーススコープ
+  - 組み込みの識別子（組み込み変数、組み込み型、組み込み関数）を保持するスコープ
+  - プログラム実行時からずっとあるスコープ
+  - 他のスコープの一番ルートとなるスコープ
+
+Question: なぜこれらは予約語（キーワード）ではなく、ユニバーススコープに属する定数として仕様が策定されたのか？
+
+- `false`
+- `iota`
+
+例：ユニバーススコープの定数 `false`、`iota` を書き換える
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    // ユニバーススコープに属する false の書き換え
+    fmt.Println("----- Check overwrite \"false\" -----")
+    defaultFalse()
+    overwriteFalse()
+
+    // ユニバーススコープに属する iota の書き換え
+    fmt.Println("----- Check overwrite \"iota\" -----")
+    defaultIota()
+    overwriteIota()
+}
+
+func defaultFalse() {
+    if false {
+        fmt.Println("false is truthy.")
+        fmt.Printf("value: %v\n", false)
+    } else {
+        fmt.Println("false is falsy.")
+        fmt.Printf("value: %v\n", false)
+    }
+    /* 補足
+    関数 overwriteFalse で書き換えた false はブロックスコープ内でのみ有効なので、
+    関数 defaultFalse の false はユニバーススコープの false を参照している（いつも使っている false と同じ false）。
+    */
+}
+
+func overwriteFalse() {
+    false := true
+    if false {
+        fmt.Println("false is truthy.")
+        fmt.Printf("value: %v\n", false)
+    } else {
+        fmt.Println("false is falsy.")
+        fmt.Printf("value: %v\n", false)
+    }
+}
+
+func defaultIota() {
+    const (
+        a = iota
+        b
+        c
+    )
+    fmt.Println(a, b, c)
+    /* 補足
+    iota はブロックスコープ内でのみ有効なので、
+    関数 defaultIota の iota はユニバーススコープの iota を参照している（いつも使っている iota と同じ iota）。
+    */
+}
+
+func overwriteIota() {
+    const iota = 11
+    const (
+        a = iota
+        b
+        c
+    )
+
+    fmt.Println(a, b, c)
+}
+```
+
+##### 補足：レキシカルスコープとは
+
 todo
+
+##### 補足：Python のグローバルスコープ
+
+Go のユニバーススコープは、（正確には異なるが）Python のグローバルスコープだと考えれば良い。Python の組み込み関数は `__builtins__` モジュールから呼び出すことが出来る。
+
+```python
+>>> globals()
+{'__name__': '__main__', '__doc__': None, '__package__': None, '__loader__': <class '_frozen_importlib.BuiltinImporter'>, '__spec__': None, '__annotations__': {}, '__builtins__': <module 'builtins' (built-in)>}
+
+>>> globals()["__builtins__"].print("Hello, world!")
+Hello, world!
+
+>>> print("Hello, world!")
+Hello, world!
+```
 
 ### 4.3. パッケージの初期化
 
