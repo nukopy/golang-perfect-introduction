@@ -49,10 +49,10 @@ go version go1.17 darwin/amd64
   1. パッケージ変数とスコープ
   1. パッケージの初期化
   1. ライブラリのバージョン管理
-- [ ] 5. コマンドラインツール（[資料]()）
-  1. a
-  1. b
-  1. c
+- [ ] 5. コマンドラインツール（[資料](https://docs.google.com/presentation/d/1KiU14z2owLUoiTYz5pKo-gP8RnP2BINmucVYJ6DfxTs/edit#slide=id.g4cc8086b3f_0_106)）
+  1. プログラム引数
+  1. flag パッケージ
+  1. 入出力
 - [ ] 6. 抽象化（[資料]()）
   1. a
   1. b
