@@ -44,7 +44,7 @@ go version go1.17 darwin/amd64
   1. 型
   1. 関数
   1. メソッド
-- [ ] 4. パッケージ（[資料](https://docs.google.com/presentation/d/1AIvamp68f8cOyJBnKtTr0t-aRNrg95OyyWUgFG9ahlA/edit#slide=id.g4f1426e3ae_0_0))
+- [x] 4. パッケージ（[資料](https://docs.google.com/presentation/d/1AIvamp68f8cOyJBnKtTr0t-aRNrg95OyyWUgFG9ahlA/edit#slide=id.g4f1426e3ae_0_0))
   1. パッケージ
   1. パッケージ変数とスコープ
   1. パッケージの初期化
