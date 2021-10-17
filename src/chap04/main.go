@@ -2,6 +2,12 @@ package main
 
 import (
 	"fmt"
+	"time"
+
+	"chap04/greeting"
+
+	tgreeting "github.com/tenntenn/greeting"
+	tgreetingv2 "github.com/tenntenn/greeting/v2"
 )
 
 func init() {
@@ -24,7 +30,7 @@ func main() {
 
 	// 4.1. パッケージ
 	// TRY パッケージを分けてみよう
-	// greeting.Do()
+	greeting.Do()
 	// greeting.do() unexported なメソッドなので外部からはアクセスできず、コンパイルエラーになる
 
 	// 4.2. パッケージ変数とスコープ
@@ -34,5 +40,18 @@ func main() {
 	// init 関数の実行
 
 	// 4.4. ライブラリのバージョン管理
-	// todo
+	// v1
+	fmt.Println("===== test github.com/tenntenn/greeting =====")
+	tgreeting.Do()
+	// v2
+	// JST := time.FixedZone("Asia/Tokyo", 9*60*60)
+	JST := time.FixedZone("Asia/Tokyo", 9*60*60)
+	date1 := time.Date(2020, 10, 31, 1, 0, 0, 0, time.UTC).In(JST)
+	date2 := time.Date(2020, 10, 31, 14, 0, 0, 0, time.UTC).In(JST)
+
+	fmt.Printf("date1: %v\n", date1)
+	fmt.Println(tgreetingv2.Do(date1))
+
+	fmt.Printf("date2: %v\n", date2)
+	fmt.Println(tgreetingv2.Do(date2))
 }
